@@ -1,0 +1,466 @@
+```html
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Турбо-Алгоритм — курсы Pascal</title>
+  <style>
+    :root {
+      --blue: #0000AA;
+      --cyan: #55FFFF;
+      --yellow: #FFFF55;
+      --white: #FFFFFF;
+      --black: #000000;
+      --gray: #AAAAAA;
+      --green: #55FF55;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--black);
+      color: var(--white);
+      font-family: "Courier New", Courier, monospace;
+      line-height: 1.35;
+    }
+
+    .screen {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 18px;
+      background: var(--blue);
+      border-left: 8px solid var(--black);
+      border-right: 8px solid var(--black);
+      min-height: 100vh;
+    }
+
+    .topline {
+      background: var(--black);
+      color: var(--cyan);
+      padding: 6px 8px;
+      border: 2px solid var(--cyan);
+      margin-bottom: 14px;
+      font-weight: bold;
+    }
+
+    .window {
+      border: 4px double var(--white);
+      background: var(--blue);
+      padding: 14px;
+      margin: 0 0 18px;
+    }
+
+    .window h2 {
+      margin: 0 0 10px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      font-size: 26px;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px var(--black);
+    }
+
+    .window h3 {
+      margin: 18px 0 8px;
+      color: var(--cyan);
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 24px 10px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 44px;
+      color: var(--yellow);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 3px 3px var(--black);
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--white);
+      margin: 12px auto 8px;
+      max-width: 780px;
+    }
+
+    .hero .tagline {
+      color: var(--cyan);
+      margin-bottom: 18px;
+    }
+
+    .codebox {
+      background: var(--black);
+      color: var(--green);
+      border: 2px solid var(--green);
+      padding: 12px;
+      text-align: left;
+      overflow: auto;
+      white-space: pre;
+      margin: 14px auto;
+      max-width: 760px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      border: 3px solid var(--yellow);
+      padding: 10px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .list li {
+      margin: 6px 0;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    .table td,
+    .table th {
+      border: 2px solid var(--cyan);
+      padding: 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .table th {
+      background: var(--black);
+      color: var(--yellow);
+    }
+
+    .note {
+      background: var(--black);
+      color: var(--yellow);
+      border: 2px dashed var(--yellow);
+      padding: 10px;
+      margin-top: 12px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    .qa {
+      margin: 0 0 12px;
+    }
+
+    .qa .q {
+      color: var(--cyan);
+      font-weight: bold;
+    }
+
+    .qa .a {
+      margin: 4px 0 0 16px;
+    }
+
+    .footer {
+      background: var(--black);
+      color: var(--cyan);
+      border: 2px solid var(--cyan);
+      padding: 8px;
+      text-align: center;
+    }
+
+    .image-box {
+      border: 3px solid var(--white);
+      background: var(--black);
+      padding: 8px;
+      text-align: center;
+    }
+
+    .image-box img {
+      display: block;
+      width: 150px;
+      height: auto;
+      margin: 0 auto;
+      image-rendering: pixelated;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .window h2 {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+
+    <div class="topline">C:\TURBO\ALGORITHM&gt; RUN COURSES.EXE</div>
+
+    <!-- 01. Главный экран -->
+    <section class="window hero">
+      <h1>Турбо-Алгоритм</h1>
+      <p class="subtitle">
+        Курсы практического программирования на Pascal для персональных компьютеров
+      </p>
+      <p class="tagline">
+        Занятия в компьютерном классе. Практика на реальных ЭВМ. Ваша первая программа — на одной дискете.
+      </p>
+
+      <div class="codebox">program FirstProgram;
+begin
+  writeln('Добро пожаловать на курсы Турбо-Алгоритм!');
+end.</div>
+
+      <a class="btn" href="#cta">[ Записаться в группу ]</a>
+    </section>
+
+    <!-- 02. Почему Pascal -->
+    <section class="window">
+      <h2>Почему Pascal?</h2>
+
+      <div class="grid">
+        <div>
+          <p>
+            Pascal создавался как язык, на котором удобно учиться думать как программист.
+            Он требует аккуратности: программа должна иметь чёткую структуру, данные — тип,
+            а действия — понятный порядок.
+          </p>
+
+          <ul class="list">
+            <li>Понятная структура программы: <strong>begin</strong>, <strong>end</strong>, блоки и процедуры.</li>
+            <li>Строгая работа с данными: меньше случайных ошибок.</li>
+            <li>Хорош для первых алгоритмов: циклы, условия, массивы, процедуры.</li>
+            <li>В Turbo Pascal можно быстро написать, откомпилировать и запустить программу.</li>
+            <li>Результат можно сохранить на дискету и показать на другом компьютере.</li>
+          </ul>
+
+          <div class="note">
+            Программа на Pascal — это не просто текст. Это план, который понимает машина.
+          </div>
+        </div>
+
+        <aside class="image-box">
+          <img src="assets/images/floppy.svg" alt="Дискета">
+          <div class="small">Программа и данные — на одной дискете</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 03. Программа курсов -->
+    <section class="window">
+      <h2>Программа курса «Турбо-Алгоритм»</h2>
+
+      <table class="table">
+        <tr>
+          <th>Занятие</th>
+          <th>Тема</th>
+          <th>Практика</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Персональный компьютер и DOS</td>
+          <td>Запуск программ, работа с диском и файлами</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Первая программа на Pascal</td>
+          <td><code>program</code>, <code>begin</code>, <code>end</code>, вывод текста</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Переменные и типы данных</td>
+          <td>Числа, строки, простые вычисления</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Условия и ветвления</td>
+          <td><code>if</code>, <code>then</code>, <code>else</code></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Циклы</td>
+          <td><code>for</code>, <code>while</code>, повторение действий</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Массивы и записи</td>
+          <td>Обработка таблиц и простых списков</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Процедуры и функции</td>
+          <td>Разбиение программы на понятные части</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Итоговая работа</td>
+          <td>Расчёт, учебная игра или простая программа учёта</td>
+        </tr>
+      </table>
+
+      <p>Каждое занятие заканчивается практикой за компьютером.</p>
+    </section>
+
+    <!-- 04. Требования к компьютеру -->
+    <section class="window">
+      <h2>Что понадобится для занятий</h2>
+
+      <div class="grid">
+        <div>
+          <ul class="list">
+            <li>персональный компьютер или учебная ЭВМ;</li>
+            <li>операционная система MS-DOS или совместимая среда;</li>
+            <li>дисковод для гибких дисков;</li>
+            <li>одна чистая дискета для сохранения программ;</li>
+            <li>клавиатура;</li>
+            <li>монитор;</li>
+            <li>компилятор Turbo Pascal;</li>
+            <li>тетрадь для записи алгоритмов.</li>
+          </ul>
+
+          <div class="note">
+            Если у вас есть компьютер, который умеет показывать командную строку, —
+            у вас уже есть будущее рабочее место программиста.
+          </div>
+        </div>
+
+        <aside class="image-box">
+          <img src="assets/images/pc.svg" alt="Персональный компьютер">
+          <div class="small">Учебная машина эпохи</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 05. История ученика -->
+    <section class="window">
+      <h2>Из учебного класса — к собственной программе</h2>
+
+      <p>
+        Ученик приходит на курсы без опыта. Сначала он не понимает, зачем нужны точки с запятой.
+        Затем пишет программу, которая считает среднее арифметическое оценок класса.
+        Потом добавляет меню. Потом сохраняет файл на дискету и запускает программу на другом компьютере.
+      </p>
+
+      <p>
+        Это и есть первый шаг программиста: не просто прочитать код,
+        а сделать так, чтобы он работал.
+      </p>
+
+      <div class="note">
+        «Я думал, что программа — это что-то для больших машин. А она поместилась на дискету».
+      </div>
+
+      <p class="small">История вымышленная и используется как рекламный образ курсов.</p>
+    </section>
+
+    <!-- 06. Вопросы и ответы -->
+    <section class="window">
+      <h2>Вопросы и ответы</h2>
+
+      <div class="qa">
+        <div class="q">Вопрос: Нужно ли уже уметь программировать?</div>
+        <div class="a">
+          Нет. Курс начинается с простых понятий: программа, переменная, команда, алгоритм.
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="q">Вопрос: Нужен ли свой компьютер?</div>
+        <div class="a">
+          Для занятий достаточно компьютера в классе. Если есть возможность,
+          программы можно сохранять на свою дискету и тренироваться дома.
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="q">Вопрос: Что делать, если программа не запускается?</div>
+        <div class="a">
+          Искать ошибку. Именно этому мы учим: читать сообщения компилятора,
+          проверять строки и постепенно исправлять код.
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="q">Вопрос: Можно ли написать игру?</div>
+        <div class="a">
+          Сначала мы учим основам. После освоения циклов, условий и вывода на экран
+          можно перейти к простой учебной игре.
+        </div>
+      </div>
+
+      <div class="qa">
+        <div class="q">Вопрос: Выдаётся ли документ?</div>
+        <div class="a">
+          Выдаётся справка учебного центра о прохождении курсов и, что важнее,
+          собственная программа на дискете.
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. Запись на курсы -->
+    <section class="window" id="cta">
+      <h2>Запись в группы открыта</h2>
+
+      <p>
+        Курсы «Турбо-Алгоритм» приглашают всех, кто хочет научиться писать программы на Pascal.
+        Количество мест в компьютерном классе ограничено.
+      </p>
+
+      <ol class="list">
+        <li>Подать заявление в учебный центр.</li>
+        <li>Принести тетрадь для алгоритмов.</li>
+        <li>Подготовить чистую дискету.</li>
+        <li>Прийти на первое занятие.</li>
+      </ol>
+
+      <p>
+        <a class="btn" href="#cta">[ Подать заявление ]</a>
+      </p>
+
+      <div class="note">
+        Не откладывайте на завтра то, что можно скомпилировать сегодня.
+      </div>
+    </section>
+
+    <div class="footer">
+      Учебный центр «Турбо-Алгоритм» • Компьютерный класс • Практика на дискетах
+    </div>
+
+  </div>
+</body>
+</html>
+```
+
+---
